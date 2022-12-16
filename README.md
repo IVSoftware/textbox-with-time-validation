@@ -5,9 +5,8 @@ A comment on your now-deleted [post](https://stackoverflow.com/questions/7482855
 
 ![not-valid](https://github.com/IVSoftware/textbox-with-time-validation/blob/master/textbox-with-time-validation/Screenshots/not-valid.png)
 
-In my testing, I was able to obtain this result using the following custom class.
+In my testing, I was able to obtain this result using the following custom class:
 
-![]
 
     class MaskedTextBoxEx : MaskedTextBox
     {
