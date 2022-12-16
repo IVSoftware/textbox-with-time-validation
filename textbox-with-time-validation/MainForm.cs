@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Windows.Forms;
 
 // https://stackoverflow.com/questions/74828557/how-to-disable-showupdown-and-calendar-drop-down-menu-as-well-in-datetimepicker
 namespace textbox_with_time_validation
@@ -8,20 +9,7 @@ namespace textbox_with_time_validation
         public MainForm()
         {
             InitializeComponent();
-            maskedTextBox.CausesValidation = true;
-            maskedTextBox.GotFocus += onMaskTextBoxFocus;
-            maskedTextBox.Validating += onMaskTextBoxValidating;
             maskedTextBox.Validated += onMaskTextBoxValidated;
-        }
-
-        private void onMaskTextBoxFocus(object? sender, EventArgs e)
-        {
-            BeginInvoke(() => maskedTextBox.Clear());
-        }
-
-        private void onMaskTextBoxValidating(object? sender, CancelEventArgs e)
-        {
-            e.Cancel = !(DateTime.TryParse(maskedTextBox.Text, out DateTime unused));
         }
 
         private void onMaskTextBoxValidated(object? sender, EventArgs e)
@@ -33,8 +21,8 @@ namespace textbox_with_time_validation
     {
         public MaskedTextBoxEx()
         {
-            Text = "00:00";
             Mask = "00:00";
+            CausesValidation= true;
         }
         private string? _lastValid = null;
         protected override void OnKeyDown(KeyEventArgs e)
@@ -61,8 +49,26 @@ namespace textbox_with_time_validation
                     OnValidated(ePlus);
                     _lastValid = Text;
                 }
+                BeginInvoke(async() =>
+                {
+                    SelectAll();
+                    Parent.BackColor = ePlus.Cancel ? Color.LightSalmon : Color.LightGreen;
+                    await Task.Delay(1000);
+                    Parent.BackColor = SystemColors.Control;
+                });
             }
             base.OnKeyDown(e);
+        }
+        protected override void OnValidating(CancelEventArgs e)
+        {
+            e.Cancel = !(DateTime.TryParse(Text, out DateTime unused));
+            base.OnValidating(e);
+        }
+        protected override void OnGotFocus(EventArgs e)
+        {
+            base.OnGotFocus(e);
+
+            BeginInvoke(() => SelectAll());
         }
     }
 }
