@@ -2,6 +2,8 @@ using System.ComponentModel;
 using System.Windows.Forms;
 
 // https://stackoverflow.com/questions/74828557/how-to-disable-showupdown-and-calendar-drop-down-menu-as-well-in-datetimepicker
+// https://stackoverflow.com/users/16695705/ondialuc
+// How to disable ShowUpDown and calendar drop down menu as well in DateTimePicker WinForms C#
 namespace textbox_with_time_validation
 {
     public partial class MainForm : Form
