@@ -23,7 +23,7 @@ namespace textbox_with_time_validation
     {
         public MaskedTextBoxEx()
         {
-            Mask = "HH:mm";
+            Mask = "00:00";
             CausesValidation= true;
         }
         private string? _lastValid = null;
