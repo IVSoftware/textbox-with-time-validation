@@ -1,4 +1,3 @@
-![objective](https://github.com/IVSoftware/textbox-with-time-validation/blob/master/textbox-with-time-validation/Screenshots/post.png)
 
 A comment on your now-deleted [post](https://stackoverflow.com/questions/74828557/how-to-disable-showupdown-and-calendar-drop-down-menu-as-well-in-datetimepicker) seems to indicate that your only objection to MaskedTextBox has to do with limitations for validation e.g. "a MaskedTextBox won't validate time value (23:59) but a DateTimePicker will...". 
 
